@@ -73,6 +73,9 @@ brew cask install --appdir="/Applications" ${apps[@]}
 
 brew cleanup
 
+echo "Setting up nvm..."
+
+nvm install node
 
 echo "Setting some Mac settings..."
 
