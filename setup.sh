@@ -58,6 +58,7 @@ cli=(
   terraform
   docker
   nvm
+  starship
 )
 
 echo "installing cli tools with brew..."
@@ -66,6 +67,8 @@ brew install ${cli[@]}
 brew cleanup
 
 echo "Setting up nvm..."
+
+mkdir .nvm/
 
 nvm install node
 
