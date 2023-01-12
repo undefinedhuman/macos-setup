@@ -21,6 +21,11 @@ echo "Git config"
 git config --global user.name "undefinedhuman"
 git config --global user.email alexander.padberg@pexon-consulting.de
 
+echo "Install 1password..."
+brew install --cask --appdir="/Applications" 1password
+
+echo "Please setup 1password and configure ssh keys + signing \n"
+read -p "Press [Enter] key after this..."
 
 #@TODO install our custom fonts and stuff
 
@@ -42,7 +47,6 @@ apps=(
   opera
   steam
   spotify
-  1password
   jetbrains-toolbox
   visual-studio-code
   slack
@@ -59,6 +63,7 @@ cli=(
   docker
   nvm
   starship
+  brew
 )
 
 echo "installing cli tools with brew..."
@@ -72,8 +77,9 @@ mkdir .nvm/
 
 nvm install node
 
-echo "Setting up starship..."
-source <(/opt/homebrew/bin/starship init zsh --print-full-init)
+echo "Enable zsh autosuggestion..."
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 echo "Setting some Mac settings..."
 
