@@ -76,7 +76,7 @@ read -p "Press [Enter] key after this..."
 
 echo "Setting up nvm..."
 
-mkdir .nvm/
+mkdir ~/.nvm/
 
 nvm install node
 
