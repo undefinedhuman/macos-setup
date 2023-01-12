@@ -2,8 +2,12 @@
 # Install if we don't have it
 if test ! $(which brew); then
   echo "Installing homebrew..."
-  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | /bin/bash
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
+
+echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /Users/undefinedhuman/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/undefinedhuman/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Update homebrew recipes
 echo "Updating homebrew..."
@@ -26,26 +30,9 @@ brew cleanup
 echo "Installing homebrew cask"
 brew install caskroom/cask/brew-cask
 
-echo "Copying dotfiles from Github"
-cd ~
-git clone git@github.com:bradp/dotfiles.git .dotfiles
-cd .dotfiles
-sh symdotfiles
-
-echo "Grunting it up"
-npm install -g grunt-cli
-
 #Install Zsh & Oh My Zsh
 echo "Installing Oh My ZSH..."
 curl -L http://install.ohmyz.sh | sh
-
-echo "Setting up Oh My Zsh theme..."
-cd  /Users/bradparbs/.oh-my-zsh/themes
-curl https://gist.githubusercontent.com/bradp/a52fffd9cad1cd51edb7/raw/cb46de8e4c77beb7fad38c81dbddf531d9875c78/brad-muse.zsh-theme > brad-muse.zsh-theme
-
-echo "Setting up Zsh plugins..."
-cd ~/.oh-my-zsh/custom/plugins
-git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
 
 echo "Setting ZSH as shell..."
 chsh -s /bin/zsh
@@ -55,13 +42,9 @@ apps=(
   opera
   steam
   spotify
-  transmission
-  onepassword
-  terraform
-  docker
+  1password
   jetbrains-toolbox
   visual-studio-code
-  nvm
   slack
   warp
 )
@@ -69,7 +52,16 @@ apps=(
 # Install apps to /Applications
 # Default is: /Users/$user/Applications
 echo "installing apps with Cask..."
-brew cask install --appdir="/Applications" ${apps[@]}
+brew install --cask --appdir="/Applications" ${apps[@]}
+
+cli=(
+  terraform
+  docker
+  nvm
+)
+
+echo "installing cli tools with brew..."
+brew install ${cli[@]}
 
 brew cleanup
 
@@ -209,9 +201,6 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
-
-
 killall Finder
-
 
 echo "Done!"
