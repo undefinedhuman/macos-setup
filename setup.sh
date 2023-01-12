@@ -71,6 +71,9 @@ brew install ${cli[@]}
 
 brew cleanup
 
+echo "Please copy all your dotfiles (dotfiles directory) into your home directory \n"
+read -p "Press [Enter] key after this..."
+
 echo "Setting up nvm..."
 
 mkdir .nvm/
