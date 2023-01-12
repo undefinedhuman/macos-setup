@@ -63,7 +63,7 @@ cli=(
   docker
   nvm
   starship
-  brew
+  yarn
 )
 
 echo "installing cli tools with brew..."
