@@ -72,6 +72,9 @@ mkdir .nvm/
 
 nvm install node
 
+echo "Setting up starship..."
+source <(/opt/homebrew/bin/starship init zsh --print-full-init)
+
 echo "Setting some Mac settings..."
 
 #"Disabling system-wide resume"
