@@ -51,6 +51,7 @@ apps=(
   visual-studio-code
   slack
   warp
+  insomnia
 )
 
 # Install apps to /Applications
