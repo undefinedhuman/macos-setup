@@ -52,6 +52,7 @@ apps=(
   slack
   warp
   insomnia
+  google-cloud-sdk
 )
 
 # Install apps to /Applications
@@ -117,8 +118,8 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 #"Disable smart quotes and smart dashes as they are annoying when typing code"
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool true
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool true
 
 #"Enabling full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
